@@ -3,18 +3,30 @@
 use Illuminate\Database\Seeder;
 use App\Models\Event;
 
+use App\Models\User;
+
 class EventsTableSeeder extends Seeder
 {
     public function run()
     {
-        $events = factory(Event::class)->times(50)->make()->each(function ($event, $index) {
-            if ($index == 0) {
-                // $event->field = 'value';
-            }
+        
+        $user_ids = User::all()->pluck('id')->toArray();
+        
+        $faker = app(Faker\Generator::class);
+        
+        $topics = factory(Event::class)
+        ->times(100)
+        ->make()
+        ->each(function ($topic, $index)
+            use ($user_ids, $faker)
+            {
+                $topic->user_id = $faker->randomElement($user_ids);
+                
+                $topic->category_id = 1;
         });
-
-        Event::insert($events->toArray());
+        
+        Event::insert($topics->toArray());
     }
-
+    
 }
 
