@@ -14,7 +14,7 @@
             <p>introduction of yourself </p>
             <hr>
             <h5><strong>Register By</strong></h5>
-            <p>January 01 1901</p>
+            <p>{{ $user->created_at }}</p>
       </div>
     </div>
   </div>
