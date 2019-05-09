@@ -38,4 +38,9 @@ class Event extends Model
         
         return $query->orderBy('created_at', 'desc');
     }
+    
+    public function scopeSearchSoundlike($query, $text){
+        $query->where('title', 'like', "%{$text}%");
+        return $query->with('user');
+    }
 }

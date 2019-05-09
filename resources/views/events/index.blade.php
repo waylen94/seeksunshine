@@ -10,10 +10,11 @@
 
       <div class="card-header bg-transparent">
         <ul class="nav nav-pills">
-          <li class="nav-item"><a class="nav-link {{ active_class( ! if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=default">Last modified</a></li>
-          <li class="nav-item"><a class="nav-link {{ active_class(if_query('order', 'recent')) }}" href="{{ Request::url() }}?order=recent">Last issued</a></li>
-        </ul>
+          <li class="nav-item"><a class="nav-link {{ active_class( ! if_query('order', 'recent')) }}" href="{{ route('events.index') }}?order=default">Last modified</a></li>
+          <li class="nav-item"><a class="nav-link {{ active_class(if_query('order', 'recent')) }}" href="{{route('events.index')}}?order=recent">Last issued</a></li>
         
+        
+ 		 </ul>
       </div>
 
       <div class="card-body">

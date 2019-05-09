@@ -58,4 +58,12 @@ class EventsController extends Controller
 
 		return redirect()->route('events.index')->with('message', 'Deleted successfully.');
 	}
+	
+	
+	public function search(Request $request, Event $event)
+	{
+	    // 		$events = Event::paginate();
+	    $events = $event->searchSoundlike($request->search)->paginate(20);
+	    return view('events.index', compact('events'));
+	}
 }

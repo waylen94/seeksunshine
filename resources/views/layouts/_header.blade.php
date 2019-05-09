@@ -21,6 +21,10 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
         @else
+        <form method = "GET" class="form-inline" action="{{ route('events.search') }}">
+    		<input class="form-control mr-sm-2" type="text" name = "search" value = "{{old('search')}}">
+    			<button class="btn btn-primary" type = "submit"><i class="fa fa-search"></i> Search</button>
+ 		 </form>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" width="30px" height="30px">
