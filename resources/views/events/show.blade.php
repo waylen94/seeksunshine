@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $topic->title)
+@section('title', $event->title)
 
 @section('content')
 
@@ -47,7 +47,7 @@
             <a href="{{ route('events.edit', $event->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
               <i class="far fa-edit"></i> Modify
             </a>
-            <a href="#" class="btn btn-outline-secondary btn-sm" role="button">
+            <a href="{{ route('events.destroy', $event->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
               <i class="far fa-trash-alt"></i> Delete
             </a>
           </div>
