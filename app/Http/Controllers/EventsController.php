@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
 
@@ -31,9 +32,15 @@ class EventsController extends Controller
 		return view('events.create_and_edit', compact('event'));
 	}
 
-	public function store(EventRequest $request)
+	public function store(EventRequest $request, Event $event)
+	
+	
 	{
-		$event = Event::create($request->all());
+	    $event->fill($request->all());
+	    $event->user_id = Auth::id();
+	    $event->category_id = 1;
+	    $event->save();
+	    
 		return redirect()->route('events.show', $event->id)->with('message', 'Created successfully.');
 	}
 

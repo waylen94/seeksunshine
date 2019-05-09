@@ -9,12 +9,11 @@ class EventPolicy extends Policy
 {
     public function update(User $user, Event $event)
     {
-        // return $event->user_id == $user->id;
-        return true;
+        return $user->isAuthorOf($event);
     }
 
     public function destroy(User $user, Event $event)
     {
-        return true;
+        return $user->isAuthorOf($event);
     }
 }

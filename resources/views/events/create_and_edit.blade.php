@@ -27,14 +27,14 @@
 
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-              @include('shared._error')
+              @include('shared._messages')
 
               <div class="form-group">
-                <input class="form-control" type="text" name="title" value="{{ old('title', $topic->title ) }}" placeholder="请填写标题" required />
+                <input class="form-control" type="text" name="title" value="{{ old('title', $event->title ) }}" placeholder="Please Insert Title" required />
               </div>
 
               <div class="form-group">
-                <textarea name="body" class="form-control" id="editor" rows="6" placeholder="Please insert some contents" required>{{ old('body', $topic->body ) }}</textarea>
+                <textarea name="body" class="form-control" id="editor" rows="6" placeholder="Please insert some contents" required>{{ old('body', $event->body ) }}</textarea>
               </div>
 
               <div class="well well-sm">

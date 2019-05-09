@@ -41,17 +41,23 @@
           <div class="event-body mt-4 mb-4">
             {!! $event->body !!}
           </div>
-
+@can('update', $event)
           <div class="operate">
             <hr>
             <a href="{{ route('events.edit', $event->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
               <i class="far fa-edit"></i> Modify
             </a>
-            <a href="{{ route('events.destroy', $event->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
-              <i class="far fa-trash-alt"></i> Delete
-            </a>
+            <form action="{{ route('events.destroy', $event->id) }}" method="post"
+                    style="display: inline-block;"
+                    onsubmit="return confirm('Do you ensure deleting action？');">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-outline-secondary btn-sm">
+                  <i class="far fa-trash-alt"></i> Delete
+                </button>
+              </form>
           </div>
-
+ @endcan
         </div>
       </div>
     </div>
