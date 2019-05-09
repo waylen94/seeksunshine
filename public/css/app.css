@@ -16487,7 +16487,7 @@ body {
 
 .masthead {
   padding-top: 10rem;
-  background: linear-gradient(to bottom, rgba(56, 193, 114, 0.8) 0%, rgba(56, 193, 114, 0.8) 100%), url("https://source.unsplash.com/user/erondu/1600x900");
+  background: url(/images/bg.jpg?e2a58205110e420c9f6f53106c1fa15f) no-repeat center center fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
