@@ -3,6 +3,7 @@
 
 @section('content')
       <div class="masthead">
+      
       <div class="row h-100 align-items-center justify-content-center text-center">
      @include('shared._messages')
         <div class="col-lg-10 align-self-end">
@@ -18,5 +19,4 @@
 		</div>
         </div>
         
-
 @stop
