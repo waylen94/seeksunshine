@@ -14,10 +14,10 @@ class EventsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+    public function index(Request $request, Event $event)
 	{
 // 		$events = Event::paginate();
-	    $events = Event::with('user')->paginate(30);
+	    $events = $event->withOrder($request->order)->paginate(20);
 		return view('events.index', compact('events'));
 	}
 
