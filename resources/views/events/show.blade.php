@@ -1,63 +1,59 @@
 @extends('layouts.app')
 
+@section('title', $topic->title)
+
 @section('content')
 
-<div class="container">
-  <div class="col-md-10 offset-md-1">
-    <div class="card ">
-      <div class="card-header">
-        <h1>Event / Show #{{ $event->id }}</h1>
-      </div>
+  <div class="row">
 
-      <div class="card-body">
-        <div class="card-block bg-light">
-          <div class="row">
-            <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('events.index') }}"><- Back</a>
-            </div>
-            <div class="col-md-6">
-              <a class="btn btn-sm btn-warning float-right mt-1" href="{{ route('events.edit', $event->id) }}">
-                Edit
+    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
+      <div class="card ">
+        <div class="card-body">
+          <div class="text-center">
+            Author：{{ $event->user->name }}
+          </div>
+          <hr>
+          <div class="media">
+            <div align="center">
+              <a href="{{ route('users.show', $event->user->id) }}">
+                <img class="thumbnail img-fluid" src="{{ $event->user->avatar }}" width="300px" height="300px">
               </a>
             </div>
           </div>
         </div>
-        <br>
+      </div>
+    </div>
 
-        <label>Title</label>
-<p>
-	{{ $event->title }}
-</p> <label>Body</label>
-<p>
-	{{ $event->body }}
-</p> <label>User_id</label>
-<p>
-	{{ $event->user_id }}
-</p> <label>Category_id</label>
-<p>
-	{{ $event->category_id }}
-</p> <label>Reply_count</label>
-<p>
-	{{ $event->reply_count }}
-</p> <label>View_count</label>
-<p>
-	{{ $event->view_count }}
-</p> <label>Last_reply_user_id</label>
-<p>
-	{{ $event->last_reply_user_id }}
-</p> <label>Order</label>
-<p>
-	{{ $event->order }}
-</p> <label>Excerpt</label>
-<p>
-	{{ $event->excerpt }}
-</p> <label>Slug</label>
-<p>
-	{{ $event->slug }}
-</p>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 event-content">
+      <div class="card ">
+        <div class="card-body">
+          <h1 class="text-center mt-3 mb-3">
+            {{ $event->title }}
+          </h1>
+
+          <div class="article-meta text-center text-secondary">
+            {{ $event->created_at->diffForHumans() }}
+            ⋅
+            <i class="far fa-comment"></i>
+            {{ $event->reply_count }}
+          </div>
+
+          <div class="event-body mt-4 mb-4">
+            {!! $event->body !!}
+          </div>
+
+          <div class="operate">
+            <hr>
+            <a href="{{ route('events.edit', $event->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
+              <i class="far fa-edit"></i> Modify
+            </a>
+            <a href="#" class="btn btn-outline-secondary btn-sm" role="button">
+              <i class="far fa-trash-alt"></i> Delete
+            </a>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-@endsection
+@stop
