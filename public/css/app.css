@@ -16487,7 +16487,7 @@ body {
 
 .masthead {
   padding-top: 10rem;
-  background: url(/images/bg.jpg?e2a58205110e420c9f6f53106c1fa15f) no-repeat center center fixed;
+  background: url(/images/bg.jpg?f3b7c751a3379942e54d1c753a930822) no-repeat center center fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -16604,5 +16604,14 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* User register page */
+
+.register-page img.captcha {
+  cursor: pointer;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 3px;
 }
 
