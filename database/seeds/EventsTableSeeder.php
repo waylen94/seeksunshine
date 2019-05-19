@@ -14,18 +14,17 @@ class EventsTableSeeder extends Seeder
         
         $faker = app(Faker\Generator::class);
         
-        $topics = factory(Event::class)
+        $event = factory(Event::class)
         ->times(100)
         ->make()
-        ->each(function ($topic, $index)
+        ->each(function ($event, $index)
             use ($user_ids, $faker)
             {
-                $topic->user_id = $faker->randomElement($user_ids);
+                $event->user_id = $faker->randomElement($user_ids);
                 
-                $topic->category_id = 1;
+                $event->category_id = 1;
         });
-        
-        Event::insert($topics->toArray());
+        Event::insert($event->toArray());
     }
     
 }
