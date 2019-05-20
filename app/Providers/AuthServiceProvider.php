@@ -27,7 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
+        // changing the automatically finding class strategy specifically the app/model
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+            // ：// 'App\Model\User' => 'App\Policies\UserPolicy',
+            return 'App\Policies\\'.class_basename($modelClass).'Policy';
+        });
         //
     }
 }
