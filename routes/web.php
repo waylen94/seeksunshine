@@ -49,3 +49,5 @@ Route::get('/search', 'EventsController@search')->name('events.search');
 
 
 
+
+Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
