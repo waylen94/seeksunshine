@@ -11,7 +11,7 @@ class EventObserver
 {
     public function creating(Event $event)
     {
-        //
+        $event->body = clean($event->body, 'user_event_body');
     }
 
     public function updating(Event $event)

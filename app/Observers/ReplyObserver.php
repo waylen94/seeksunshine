@@ -11,7 +11,7 @@ class ReplyObserver
 {
     public function creating(Reply $reply)
     {
-        //
+        $reply->content = clean($reply->content, 'user_event_body');
     }
 
     public function updating(Reply $reply)
