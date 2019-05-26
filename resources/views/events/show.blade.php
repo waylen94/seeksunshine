@@ -63,7 +63,7 @@
       
       <div class="card topic-reply mt-4">
           <div class="card-body">
-              @include('events._reply_box', ['event' => $event])
+              @includeWhen(Auth::check(),'events._reply_box', ['event' => $event])
               @include('events._reply_list', ['replies' => $event->replies()->with('user')->get()])
           </div>
       </div>

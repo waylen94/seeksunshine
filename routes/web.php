@@ -45,9 +45,13 @@ Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'crea
 
 Route::resource('events', 'EventsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-Route::get('/search', 'EventsController@search')->name('events.search');
+Route::get('/search', 'EventsController@search')->name('events.search');    
 
 
 
 
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => [ 'store', 'destroy']]);
+
+
+
+

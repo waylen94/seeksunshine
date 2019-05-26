@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReplyRequest;
 
@@ -30,10 +31,14 @@ class RepliesController extends Controller
 		return view('replies.create_and_edit', compact('reply'));
 	}
 
-	public function store(ReplyRequest $request)
+	public function store(ReplyRequest $request, Reply $reply)
 	{
-		$reply = Reply::create($request->all());
-		return redirect()->route('replies.show', $reply->id)->with('message', 'Created successfully.');
+	    $reply->content = $request->content;
+	    $reply->user_id = Auth::id();
+	    $reply->event_id = $request->event_id;
+	    $reply->save();
+	    
+	    return redirect()->to($reply->event->link())->with('success', 'replies created successfully！');
 	}
 
 	public function edit(Reply $reply)

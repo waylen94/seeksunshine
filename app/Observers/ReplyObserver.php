@@ -18,4 +18,10 @@ class ReplyObserver
     {
         //
     }
+    public function created(Reply $reply)
+    {
+//         $reply->topic->increment('reply_count', 1); or you can
+        $reply->event->reply_count = $reply->event->replies->count();
+        $reply->event->save();
+    }
 }
