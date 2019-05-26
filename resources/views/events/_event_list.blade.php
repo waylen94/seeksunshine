@@ -4,8 +4,11 @@
       <li class="media">
         <div class="media-left">
           <a href="{{ route('users.show', [$event->user_id]) }}">
-            <img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" title="{{ $event->user->name }}">
+<!--              <img class="thumbnail img-fluid" src="{{ $event->user->avatar }}" width="52px" height="52px"> -->
+<img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="{{ $event->user->avatar }}" title="{{ $event->user->name }}">
+         
           </a>
+          
         </div>
 
         <div class="media-body">
