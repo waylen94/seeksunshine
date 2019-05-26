@@ -49,4 +49,9 @@ class Event extends Model
         $query->where('title', 'like', "%{$text}%");
         return $query->with('user');
     }
+    
+    public function link($params = [])
+    {
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
+    }
 }

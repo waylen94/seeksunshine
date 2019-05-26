@@ -4,10 +4,9 @@
       <li class="media">
         <div class="media-left">
           <a href="{{ route('users.show', [$event->user_id]) }}">
-<!--              <img class="thumbnail img-fluid" src="{{ $event->user->avatar }}" width="52px" height="52px"> -->
-<img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="{{ $event->user->avatar }}" title="{{ $event->user->name }}">
-         
-          </a>
+            <!--              <img class="thumbnail img-fluid" src="{{ $event->user->avatar }}" width="52px" height="52px"> -->
+            <img class="media-object img-thumbnail mr-3" style="width: 52px; height: 52px;" src="{{ $event->user->avatar }}" title="{{ $event->user->name }}">
+         </a>
           
         </div>
 

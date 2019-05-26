@@ -29,9 +29,30 @@
     {{-- Statistics --}}
     <div class="card ">
       <div class="card-body">
+      	<ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', null)) }}" href="{{ route('users.show', $user->id) }}">
+              Events
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'replies')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">
+              Replies
+            </a>
+          </li>
+        </ul>
+        @if (if_query('tab', 'replies'))
+          @include('users._replies', ['replies' => $user->replies()->with('event')->recent()->paginate(5)])
+        @else
+          @include('users._events', ['topics' => $user->events()->recent()->paginate(5)])
+        @endif
       </div>
     </div>
-
+      </div>
+    </div>
+		
+		
+		
   </div>
 </div>
 @stop
